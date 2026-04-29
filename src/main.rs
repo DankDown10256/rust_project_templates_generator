@@ -3,7 +3,7 @@ use std::fs;
 use std::process::Command;
 
 fn main() {
-    println!("Available projects templates :\nFlask\nRust (cargo)\nfrontend (html, css, js)");
+    println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter");
     let mut project = String::new();
     print!("Pick one: ");
     io::stdout().flush().unwrap();
@@ -58,7 +58,7 @@ fn main() {
             println!("An error occured");
         }
     }
-    if project.trim().to_lowercase() == "frontend" {
+    else if project.trim().to_lowercase() == "frontend" {
         let mut filename = String::new();
         print!("Project file name : ");
         io::stdout().flush().unwrap();
@@ -82,6 +82,39 @@ fn main() {
             }
             Err(e) => {
                 eprintln!("Can't create the template: {}", e);
+            }
+        }
+    }
+    else if project.trim().to_lowercase() == "flutter" {
+        let mut filename = String::new();
+        print!("Project file name : ");
+        io::stdout().flush().unwrap();
+        io::stdin()
+            .read_line(&mut filename)
+            .expect("Error in reading retry");
+        let filename = filename.trim();
+        let flutter_tree = vec![
+            ("assets/", true),
+            ("lib/", true),
+            ("lib/src/", true),
+            ("lib/widgets/", true),
+            ("lib/main.dart", false),
+            ("tests/", true),
+            ("pubspec.yaml", false),
+        ];
+        for (path, is_dir) in flutter_tree {
+            let full_path = format!("{}/{}", filename, path);
+
+            if is_dir{
+                if let Err(e) = fs::create_dir_all(&full_path){
+                    eprintln!("An error occured retry: {}", e);
+                }
+                else{
+                    println!("Directory created");
+                }
+            }
+            else{
+                println!("Created: {}", full_path);
             }
         }
     }
