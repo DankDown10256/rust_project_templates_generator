@@ -3,7 +3,7 @@ use std::fs;
 use std::process::Command;
 
 fn main() {
-    println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter\nJava");
+    println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter\nJava\nIOS");
     let mut project = String::new();
     print!("Pick one: ");
     io::stdout().flush().unwrap();
@@ -139,6 +139,42 @@ fn main() {
             ("pom.xml", false),
         ];
         for (path, is_dir) in java_tree {
+            let full_path = format!("{}/{}", filename, path);
+
+            if is_dir{
+                if let Err(e) = fs::create_dir_all(&full_path){
+                    eprintln!("An error occured retry: {}", e);
+                }
+                else{
+                    println!("Directory created");
+                }
+            }
+            else{
+                println!("Created: {}", full_path);
+            }
+        }
+    }
+    else if project.trim().to_lowercase() == "ios" {
+        let mut filename = String::new();
+        print!("Project file name : ");
+        io::stdout().flush().unwrap();
+        io::stdin()
+            .read_line(&mut filename)
+            .expect("Error in reading retry");
+        let filename = filename.trim();
+        let ios_tree: Vec<(String, bool)> = vec![
+            ("App/".to_string(), true),
+            (format!("App/{}.swift", filename), false),
+            ("Views/".to_string(), true),
+            ("Views/ContentView.swift".to_string(), false),
+            ("Resources/".to_string(), true),
+            ("Resources/Assests.xcassets/".to_string(), true),
+            ("Resources/Assets.xcassets/Contents.json".to_string(), false),
+            ("Resources/Info.plist".to_string(), false),
+            ("Tests/".to_string(), true),
+            (format!("Tests/{}Tests.swift", filename), false),
+        ];
+        for (path, is_dir) in ios_tree {
             let full_path = format!("{}/{}", filename, path);
 
             if is_dir{
