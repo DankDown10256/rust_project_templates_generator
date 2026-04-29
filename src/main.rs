@@ -3,7 +3,7 @@ use std::fs;
 use std::process::Command;
 
 fn main() {
-    println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter");
+    println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter\nJava");
     let mut project = String::new();
     print!("Pick one: ");
     io::stdout().flush().unwrap();
@@ -118,4 +118,41 @@ fn main() {
             }
         }
     }
+    else if project.trim().to_lowercase() == "java" {
+        let mut filename = String::new();
+        print!("Project file name : ");
+        io::stdout().flush().unwrap();
+        io::stdin()
+            .read_line(&mut filename)
+            .expect("Error in reading retry");
+        let filename = filename.trim();
+        let java_tree = vec![
+            ("src/", true),
+            ("src/main/", true),
+            ("src/main/java/", true),
+            ("src/main/java/com/", true),
+            ("src/main/java/com/me/", true),
+            ("src/main/java/com/me/app/", true),
+            ("src/main/java/com/me/app/Main.java", false),
+            ("src/main/resources/", true),
+            ("target/", true),
+            ("pom.xml", false),
+        ];
+        for (path, is_dir) in java_tree {
+            let full_path = format!("{}/{}", filename, path);
+
+            if is_dir{
+                if let Err(e) = fs::create_dir_all(&full_path){
+                    eprintln!("An error occured retry: {}", e);
+                }
+                else{
+                    println!("Directory created");
+                }
+            }
+            else{
+                println!("Created: {}", full_path);
+            }
+        }
+    }
+
 }
