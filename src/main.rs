@@ -5,7 +5,8 @@ use std::process::Command;
 fn main() {
     println!("Available projects templates :\nFlask\nRust (cargo)\nfrontend (html, css, js)");
     let mut project = String::new();
-    println!("Pick one: ");
+    print!("Pick one: ");
+    io::stdout().flush().unwrap();
     io::stdin()
         .read_line(&mut project)
         .expect("Reading error retry later");
