@@ -2,7 +2,25 @@ use std::io::{self, Write};
 use std::fs;
 use std::process::Command;
 
+fn draw_title () {
+    let title = "PROJECT TEMPLATES GENERATOR";
+    let sub = "Made by DankDown10256 | https://lucas.vincz.fr";
+    let width = 60;
+
+    let cyan = "\x1b[36m";
+    let reset = "\x1b[0m";
+    let gray = "\x1b[90m";
+
+    println!("{cyan}╭{:─^width$}╮", "", width = width);
+    println!("│{:^width$}│", title, width = width);
+    println!("├{:─^width$}┤", "", width = width);
+    println!("│ {gray}{:<width$}{reset} │", sub, width = width - 2);
+    println!("╰{:─^width$}╯{reset}", "", width = width);
+    println!();
+}
+
 fn main() {
+    draw_title();
     println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter\nJava\nIOS");
     let mut project = String::new();
     print!("Pick one: ");
