@@ -8,9 +8,9 @@ fn draw_title () {
     let width = 100;
 
     println!("╭{:─^width$}╮", "", width = width);
-    println!("│{:^width$} │", title, width = width);
+    println!("│{:^width$}│", title, width = width);
     println!("├{:─^width$}┤", "", width = width);
-    println!("│ {:<width$}│", sub, width = width - 2);
+    println!("│ {:<width$} │", sub, width = width - 2);
     println!("╰{:─^width$}╯", "", width = width);
     println!();
 }
