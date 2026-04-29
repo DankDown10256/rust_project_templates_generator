@@ -109,12 +109,11 @@ fn main() {
                 if let Err(e) = fs::create_dir_all(&full_path){
                     eprintln!("An error occured retry: {}", e);
                 }
-                else{
-                    println!("Directory created");
-                }
             }
             else{
-                println!("Created: {}", full_path);
+                if let Err(e) = fs::File::create(&full_path){
+                    eprintln!("Error in the creation of {}: {}", full_path, e);
+                }
             }
         }
     }
@@ -145,12 +144,11 @@ fn main() {
                 if let Err(e) = fs::create_dir_all(&full_path){
                     eprintln!("An error occured retry: {}", e);
                 }
-                else{
-                    println!("Directory created");
-                }
             }
             else{
-                println!("Created: {}", full_path);
+                if let Err(e) = fs::File::create(&full_path){
+                    eprintln!("Error in the creation of {}: {}", full_path, e);
+                }
             }
         }
     }
@@ -181,12 +179,11 @@ fn main() {
                 if let Err(e) = fs::create_dir_all(&full_path){
                     eprintln!("An error occured retry: {}", e);
                 }
-                else{
-                    println!("Directory created");
-                }
             }
             else{
-                println!("Created: {}", full_path);
+                if let Err(e) = fs::File::create(&full_path){
+                    eprintln!("Error in the creation of {}: {}", full_path, e);
+                }
             }
         }
     }
