@@ -45,7 +45,7 @@ git clone https://github.com/DankDown10256/rust_project_templates_generator/
 ### 2. Enter the directory
 
 ```bash
-cd rust_projects_templates_generator
+cd rust_project_templates_generator
 ```
 
 ### 3. Build the project
