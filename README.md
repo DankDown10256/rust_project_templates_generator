@@ -39,7 +39,7 @@ cargo --version
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/DankDown10256/rust_projects_templates_generator/
+git clone https://github.com/DankDown10256/rust_project_templates_generator/
 ```
 
 ### 2. Enter the directory
