@@ -5,17 +5,13 @@ use std::process::Command;
 fn draw_title () {
     let title = "PROJECT TEMPLATES GENERATOR";
     let sub = "Made by DankDown10256 | https://lucas.vincz.fr";
-    let width = 60;
+    let width = 100;
 
-    let cyan = "\x1b[36m";
-    let reset = "\x1b[0m";
-    let gray = "\x1b[90m";
-
-    println!("{cyan}╭{:─^width$}╮", "", width = width);
-    println!("│{:^width$}│", title, width = width);
+    println!("╭{:─^width$}╮", "", width = width);
+    println!("│{:^width$} │", title, width = width);
     println!("├{:─^width$}┤", "", width = width);
-    println!("│ {gray}{:<width$}{reset} │", sub, width = width - 2);
-    println!("╰{:─^width$}╯{reset}", "", width = width);
+    println!("│ {:<width$}│", sub, width = width - 2);
+    println!("╰{:─^width$}╯", "", width = width);
     println!();
 }
 
