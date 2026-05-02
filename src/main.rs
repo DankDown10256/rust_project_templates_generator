@@ -4,7 +4,7 @@ use std::process::Command;
 
 fn draw_title () {
     let title = "PROJECT TEMPLATES GENERATOR";
-    let sub = "Made by DankDown10256 | https://lucas.vincz.fr";
+    let sub = "Happy Coding";
     let width = 100;
 
     println!("╭{:─^width$}╮", "", width = width);
