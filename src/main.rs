@@ -24,7 +24,7 @@ fn main() {
         .read_line(&mut start)
         .expect("An error occured");
     if start.trim() == "1" {
-        println!("Available projects templates :\nFlask\nRust (cargo)\nFrontend (html, css, js)\nFlutter\nJava\nIOS");
+        println!("Available projects templates :\nFlask\nRust (cargo new)\nFrontend (html, css, js)\nFlutter\nJava\nIOS");
         let mut project = String::new();
         print!("Pick one: ");
         io::stdout().flush().unwrap();
